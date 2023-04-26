@@ -11,7 +11,7 @@ build:
 
 # Run the Docker container
 run:
-	docker run -d -p 5000:5000 --name $(CONTAINER_NAME) $(IMAGE_NAME):$(IMAGE_VERSION)
+	docker run -d -p 8000:8000 --name $(CONTAINER_NAME) $(IMAGE_NAME):$(IMAGE_VERSION)
 
 # Stop the Docker container
 stop:

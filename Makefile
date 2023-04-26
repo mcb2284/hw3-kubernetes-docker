@@ -1,32 +1,34 @@
-# Docker image name and version
-IMAGE_NAME = my-todo-app
-IMAGE_VERSION = 1.0
+# Makefile for Docker Compose
 
-# Docker container name
-CONTAINER_NAME = my-todo-app-container
+# Define variables
+COMPOSE_FILE = docker-compose.yml
+IMAGE_NAME = hw3-kubernetes-docker-flask
 
 # Build the Docker image
 build:
-	docker build -t $(IMAGE_NAME):$(IMAGE_VERSION) .
+	docker-compose -f $(COMPOSE_FILE) build
 
-# Run the Docker container
-run:
-	docker run -d -p 8000:8000 --name $(CONTAINER_NAME) $(IMAGE_NAME):$(IMAGE_VERSION)
+# Start the Docker containers
+start:
+	docker-compose -f $(COMPOSE_FILE) up -d
 
-# Stop the Docker container
+# Stop the Docker containers
 stop:
-	docker stop $(CONTAINER_NAME)
+	docker-compose -f $(COMPOSE_FILE) down
 
-# Remove the Docker container
-remove:
-	docker rm $(CONTAINER_NAME)
+# Restart the Docker containers
+restart: stop start
 
-# Clean up the Docker image
+# Clean up Docker containers and images
 clean:
-	docker rmi $(IMAGE_NAME):$(IMAGE_VERSION)
+	docker-compose -f $(COMPOSE_FILE) down
+	docker rmi -f $(IMAGE_NAME)
 
-# Build and run the Docker container
-start: build run
+# View the Docker logs
+logs:
+	docker-compose -f $(COMPOSE_FILE) logs -f
 
-# Stop and remove the Docker container
-stop-and-remove: stop remove
+# Enter the Flask container
+shell:
+	docker-compose -f $(COMPOSE_FILE) exec flask bash
+

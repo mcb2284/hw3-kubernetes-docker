@@ -21,3 +21,4 @@ EXPOSE 8000
 
 # Run the Flask application
 CMD ["python", "app.py"]
+

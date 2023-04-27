@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: flask
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -18,6 +18,6 @@ spec:
           ports:
             - containerPort: 8000
         - name: mongo-db
-          image: mongo:4.4.6
+          image: mongo
           ports:
             - containerPort: 27017

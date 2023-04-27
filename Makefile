@@ -32,3 +32,11 @@ logs:
 shell:
 	docker-compose -f $(COMPOSE_FILE) exec flask bash
 
+deploy:
+	kubectl apply -f deployment.yaml
+	kubectl apply -f service.yaml
+
+delete:
+	kubectl delete deployments --all
+	kubectl delete services --all
+

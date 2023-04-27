@@ -16,7 +16,7 @@ spec:
         - name: flask
           image: mcb2284/flask-1:latest
           ports:
-            - containerPort: 5000
+            - containerPort: 8000
 ---
 apiVersion: apps/v1
 kind: Deployment

@@ -4,35 +4,56 @@
 
 Ensure the docker **mongo** image is installed:
 
-    `brew install mongo`
+    brew install mongo
 
 ### Run
 Start the container:
     
-    `docker-compose up`
+    docker-compose up
 
 Stop the container:
 
-    `docker-compose down`
+    docker-compose down
 
 
 ## Make
 The **Makefile** contains all the docker commands.
 
 ### Build the Docker image
-    `make build`
+    make build
 
 ### Start the Docker containers
-    `make start`
+    make start
 
 ### Stop the Docker containers
-    `make stop`
+    make stop
 
 ### Restart the Docker containers
-    `make restart`
+    make restart
 
 ### Clean up Docker containers and images
-    `make clean`
+    make clean
 
 ### View the Docker logs
-    `make logs`
+    make logs
+
+
+## Minikube
+
+Start the minikube with `minikube start`
+
+Add the deployment file `kubectl apply -f deployment.yaml`
+
+Add the service file `kubectl apply -f service.yaml`
+
+View running deployments   `kubectl get deployments`
+
+View running pods   `kubectl get pods`
+
+View running services   `kubectl get services`
+
+Delete all:
+    
+    kubectl delete deployments --all
+    kubectl delete services --all
+    

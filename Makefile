@@ -39,27 +39,34 @@ delete:
 	kubectl delete deployments --all
 	kubectl delete services --all
 
-## Helpful kubectl commands:
+##### Helpful kubectl commands:
 # kubectl cluster-info dump
 # kubectl apply -f .
 # kubectl describe pod <podname>
 # kubectl get pods --watch 
 
-## Fixing minikube by updating the image that's pushed to docker hub (do not use outdated):
+##### Fixing minikube by updating the image that's pushed to docker hub (do not use outdated):
+#
+# login to my docker if its easier: 
+# docker login --username=isabelmacgill --email=ism2113@columbia.edu
+# password: pa1416DTLA1618!
+#
 # https://jsta.github.io/r-docker-tutorial/04-Dockerhub.html
 #
 # docker images 
 # run ^ to get image id of newly updated/created image
 # 
-# docker tag <imageId> <yourhubusername>/<repositoryname>:<tag>
+# docker tag <imageId> <isabelmacgill>/<repositoryname>:<tag>
 # run ^ to tage the image you want to push
 # 
-# docker push <yourhubusername>/<repositoryname>
+# docker push <isabelmacgill>/<repositoryname>
 # run ^ to push to docker hub
 #
 # in deployment.yaml where you specify container image name: 
 # image: <yourhubusername>/<respositoryname>:<tag>
 # make delete, make clean, minikube service flask 
+
+
 
 ## Fixing minikube service error by not pulling images BAD JUST TO TEST:
 # https://medium.com/swlh/how-to-run-locally-built-docker-images-in-kubernetes-b28fbc32cc1d

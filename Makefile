@@ -45,10 +45,26 @@ delete:
 # kubectl describe pod <podname>
 # kubectl get pods --watch 
 
+## Fixing minikube by updating the image that's pushed to docker hub (do not use outdated):
+# https://jsta.github.io/r-docker-tutorial/04-Dockerhub.html
+#
+# docker images 
+# run ^ to get image id of newly updated/created image
+# 
+# docker tag <imageId> <yourhubusername>/<repositoryname>:<tag>
+# run ^ to tage the image you want to push
+# 
+# docker push <yourhubusername>/<repositoryname>
+# run ^ to push to docker hub
+#
+# in deployment.yaml where you specify container image name: 
+# image: <yourhubusername>/<respositoryname>:<tag>
+# make delete, make clean, minikube service flask 
 
-## Fixing minikube service error: 
+## Fixing minikube service error by not pulling images BAD JUST TO TEST:
 # https://medium.com/swlh/how-to-run-locally-built-docker-images-in-kubernetes-b28fbc32cc1d
 #
+# add image never pull policy line to deployment.yaml (flask file)
 # check minikube docker-env, run: 
 # minikube docker-env
 #

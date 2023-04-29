@@ -121,8 +121,8 @@ def about():
 
 if __name__ == "__main__":
 	env = os.environ.get('FLASK_ENV', 'development')
-	port = int(os.environ.get('PORT', 8000))
+	port = int(os.environ.get('PORT', 5000))
 	debug = False if env == 'production' else True
 	app.run(debug=True)
-	app.run(port=port, debug=debug)
+	app.run(port=port, debug=debug, host='0.0.0.0')
 	# Careful with the debug mode..

@@ -3,7 +3,7 @@ services:
   flask:
     build: .
     ports:
-      - "8000:8000"
+      - "5000:5000"
     environment:
       MONGO_HOST: mongo
     depends_on:

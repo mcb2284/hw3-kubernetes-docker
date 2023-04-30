@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: flask-rc
+spec:
+  replicas: 3
+  selector:
+    app: flask
+  template:
+    metadata:
+      name: flask
+      labels:
+        app: flask
+    spec:
+      containers:
+      - name: flask
+        image: isabelmacgill/hw3-kubernetes-docker-flask:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MONGO_HOST
+          value: mongodb://mongo:27017/dev
+        - name: MONGO_PORT
+          value: '27017'
+        resources:
+          limits:
+            cpu: '1'
+            memory: "512Mi"
+          requests:
+            cpu: "0.5"
+            memory: "256Mi"
+

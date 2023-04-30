@@ -35,9 +35,11 @@ deploy:
 	kubectl apply -f deployment.yaml
 	kubectl apply -f service.yaml
 	kubectl apply -f mongo.yaml
+	kubectl apply -f replication-controller.yaml
 delete:
 	kubectl delete deployments --all
 	kubectl delete services --all
+	kubectl delete rc flask-rc
 
 ##### Helpful kubectl commands:
 # kubectl cluster-info dump

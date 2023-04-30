@@ -3,10 +3,15 @@ kind: Deployment
 metadata:
   name: flask
 spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
   selector:
     matchLabels:
       app: flask
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:

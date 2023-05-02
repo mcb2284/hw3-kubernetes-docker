@@ -69,6 +69,9 @@ delete:
 # make delete, make clean, minikube service flask 
 
 
+## Probes + Rolling Update Strategies: 
+# https://www.bluematador.com/blog/kubernetes-deployments-rolling-update-configuration
+
 
 ## Fixing minikube service error by not pulling images BAD JUST TO TEST:
 # https://medium.com/swlh/how-to-run-locally-built-docker-images-in-kubernetes-b28fbc32cc1d

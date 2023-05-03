@@ -19,25 +19,27 @@ spec:
     spec:
       containers:
       - name: flask
-        image: isabelmacgill/hw3-kubernetes-docker-flask:latest
+        image: isabelmacgill/hw3-kubernetes-docker-flask:latest2
         ports:
         - containerPort: 5000
         readinessProbe:
-          periodSeconds: 20
-          timeoutSeconds: 10
+          initialDelaySeconds: 10
+          periodSeconds: 60
+          timeoutSeconds: 20
           successThreshold: 1
-          failureThreshold: 1
+          failureThreshold: 3
           httpGet:
-            path: /
+            scheme: HTTP
+            path: /healthr
             port: 5000
         livenessProbe:
           initialDelaySeconds: 30
-          periodSeconds: 20
-          timeoutSeconds: 10
+          periodSeconds: 30
+          timeoutSeconds: 20
           successThreshold: 1
-          failureThreshold: 1
+          failureThreshold: 3
           httpGet:
-            path: /
+            path: /healthl
             port: 5000
         env:
         - name: MONGO_HOST

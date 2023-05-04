@@ -3,7 +3,7 @@ kind: ReplicationController
 metadata:
   name: flask-rc
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     app: flask
   template:
@@ -24,7 +24,7 @@ spec:
           value: '27017'
         resources:
           limits:
-            cpu: '1'
+            cpu: '0.5'
             memory: "512Mi"
           requests:
             cpu: "0.5"

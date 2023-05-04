@@ -41,6 +41,24 @@ delete:
 	kubectl delete services --all
 	kubectl delete rc flask-rc
 
+clone-state-metrics: 
+	git clone https://github.com/devopscube/kube-state-metrics-configs.git
+	
+monitoring: 
+	kubectl apply -f clusterRole.yaml --namespace=monitoring
+	kubectl apply -f config-map.yaml --namespace=monitoring
+	kubectl apply -f prometheus-deployment.yaml --namespace=monitoring
+	kubectl apply -f prometheus-service.yaml --namespace=monitoring
+	kubectl apply -f kube-state-metrics-configs/ 
+	kubectl apply -f AlertManagerConfigmap.yaml --namespace=monitoring
+	kubectl apply -f AlertTemplateConfigMap.yaml --namespace=monitoring
+	kubectl apply -f AlertDeployment.yaml --namespace=monitoring
+	kubectl apply -f AlertService.yaml --namespace=monitoring
+
+delete-m:
+	kubectl delete deployments --namespace monitoring --all
+	kubectl delete services --namespace monitoring --all
+
 ##### Helpful kubectl commands:
 # kubectl cluster-info dump
 # kubectl apply -f .
